@@ -1,0 +1,130 @@
+
+
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: max-content;
+    /* position: relative; */
+}
+
+.side-bar {
+    /* position: fixed; */
+    /* top: 0; */
+    /* left: 0; */
+    height: 100vh;
+    width: 255px;
+    border-right: 1px solid rgb(0, 0, 0);
+    box-shadow: 0px 0px 20px 15px rgba(0,0,0,0.1);
+    padding-top: 5px;
+}
+
+.side-bar .logo {
+    font-family: "Electrolize";
+    font-weight: 600;
+}
+
+
+.side-bar ul li{
+    list-style: none;
+    padding: 10px;
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.side-bar ul li::after{
+    content: "";
+    width: 0%;
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    height: 2px;
+    background-color: rgba(0, 0, 255, 0.747);
+    transition: all 0.3s ease;
+}
+
+.side-bar ul li:hover::after{
+    width: 70%;
+}
+
+.mainArea {
+    max-height: 100vh;
+    width: 100%;
+    padding-inline: 20px;
+    overflow-y: auto;
+}
+.mainArea::-webkit-scrollbar{
+    width: 0;
+}
+
+.name-date{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.name-date h1{
+    font-weight: 400;
+}
+
+.progress{
+    height: 200px;
+    width: 100%;
+    border: 1px solid var(--border-color);
+    margin: auto;
+    margin-top: 20px;
+    padding-inline: 20px;
+    position: relative;
+}
+
+.HomeTasks{
+    margin: auto;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.HomeTasks .card{
+    height: 280px;
+    width: 249px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.progressbar{
+    height: 15px;
+    border: 1px solid var(--border-color);
+    /* background: linear-gradient(90deg,green 68%, rgb(255, 255, 255) 32%); */
+}
+
+.perc-progressBar h3{
+    color: var(--button-color);
+}
+
+.progress h1{
+    position: absolute;
+    top: 10px;
+}
+
+.card span{
+    font-size: 4rem;
+    font-weight: 500;
+}
+
+.card .total{
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.total img{
+    height: 25px;
+}
+
+

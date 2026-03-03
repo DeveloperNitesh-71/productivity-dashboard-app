@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productivity dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <link rel="stylesheet" href="project Bridging files/style.css">
+    <link rel="stylesheet" href="dashboard management system/dashboardManagement.css">
+    <link rel="stylesheet" href="task management system/taskManager.css">
+</head>
+
+<body>
+    <div class="side-bar flex align-center flex-column">
+        <div class="logo">Productivity dashboard</div>
+        <ul class="mt-10">
+            <li>
+                <i class="fa-solid fa-chart-bar"></i>
+                <span>Dashboard</span>
+            </li>
+            <li>
+                <i class="fa-solid fa-clipboard-check"></i>
+                <span>Task</span>
+            </li>
+            <li>
+                <i class="fa-solid fa-bullseye"></i>
+                <span>Goal</span>
+            </li>
+            <li>
+                <i class="fa-solid fa-calendar-days"></i>
+                <span>Calender</span>
+            </li>
+            <li>
+                <i class="fa-solid fa-chart-pie"></i>
+                <span>Analytics</span>
+            </li>
+            <li>
+                <i class="fa-solid fa-gear"></i>
+                <span>Settings</span>
+            </li>
+        </ul>
+    </div>
+    <div class="mainArea">
+        <div class="name-date">
+            <h1>Hi, Name</h1>
+            <div class="date">Sunday, 22-Feb-26</div>
+        </div>
+        <!-- dashboard  -->
+        <section>
+            <div class="progress-tasks flex flex-column gap-20">
+                <div class="progress flex flex-column justify-center radius-15">
+                    <h1>Progress</h1>
+                    <div class="perc-progressBar flex flex-column justify-center">
+                        <h3 class="percent">68%</h3>
+                        <div class="progressbar radius-15"></div>
+                    </div>
+                </div>
+                <div class="HomeTasks flex gap-10">
+                    <div class="card total-task">
+                        <span class="totalTaskCount">13</span>
+                        <div class="total flex align-center">
+                            <img src="assets/task.png">Tasks
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card">
+                            <span class="TotalPendingTasks">6</span>
+                            <div class="total flex align-center">
+                                <img src="assets/pending.png">Pending
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card">
+                            <span class="TotalCompletedTasks">7</span>
+                            <div class="total flex align-center">
+                                <img src="assets/check.png">Completed
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card">
+                            <span class="FocusTime">0s</span>
+                            <div class="total flex align-center">
+                                <img src="assets/focus.png">Focus Time
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- task manager -->
+        <section>
+            <div class="TaskManager-Times flex flex-column mt-10">
+                <h1>Task Manager</h1>
+                <div class="TaskManager flex gap-20 mt-20">
+                    <div class="taskBlock flex flex-column align-center" id="InitialTasks">
+                        <div class="TaskContainerHeading">
+                            <span>Todo</span>
+                            <div class="icons">
+                                <i class="fa-solid fa-plus" id="AddNewTaskIcon"></i>
+                                <i class="fa-regular fa-pen-to-square EditHeading"></i>
+                            </div>
+                        </div>
+                        <div class="TasksContainer InitialTaskContainer flex flex-column gap-10" data-status="new">
+                            <div class="Tasks" draggable="true" data-status="new">
+                                <span class="TaskTitle">initial Task 1</span>
+                                <i class="fa-regular fa-trash-can trash"></i>
+                            </div>
+                            <div class="Tasks" draggable="true" data-status="new">
+                                <span class="TaskTitle">initial Task 2</span>
+                                <i class="fa-regular fa-trash-can trash"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="taskBlock flex flex-column align-center" id="PendingTasks">
+                        <div class="TaskContainerHeading">
+                            <span>Pending</span>
+                            <div class="icons">
+                                <i class="fa-regular fa-pen-to-square EditHeading"></i>
+                            </div>
+                        </div>
+                        <div class="TasksContainer PendingTaskContainer flex flex-column gap-10" data-status="pending">
+                            <div class="Tasks" draggable="true" data-status="pending">
+                                <span class="TaskTitle">initial Task 3</span>
+                                <i class="fa-regular fa-trash-can trash"></i>
+                            </div>
+                            <div class="Tasks" draggable="true" data-status="pending">
+                                <span class="TaskTitle">initial Task 4</span>
+                                <i class="fa-regular fa-trash-can trash"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="taskBlock flex flex-column align-center" id="CompletedTasks">
+                        <div class="TaskContainerHeading">
+                            <span>Completed</span>
+                            <div class="icons">
+                                <i class="fa-regular fa-pen-to-square EditHeading"></i>
+                            </div>
+                        </div>
+                        <div class="TasksContainer CompletedTaskContainer flex flex-column gap-10"
+                            data-status="completed">
+                            <div class="Tasks" draggable="true" data-status="completed">
+                                <span class="TaskTitle">initial Task 5</span>
+                                <i class="fa-regular fa-trash-can trash"></i>
+                            </div>
+                            <div class="Tasks" draggable="true" data-status="completed">
+                                <span class="TaskTitle">initial Task 6</span>
+                                <i class="fa-regular fa-trash-can trash"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="times">
+                    <div class="TaskManager flex align-center gap-20 mt-20">
+                        <div class="timeBlock flex flex-column align-center">
+                            <div class="TaskContainerHeading">
+                                <span>Calender</span>
+                            </div>
+                            <div class="calender">
+                                <div class="left">
+                                    <span class="Calenderdate"></span>
+                                    <p class="day"></p>
+                                </div>
+                                <div class="right">
+                                    <span class="year"></span>
+                                    <p class="month"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="timeBlock flex flex-column align-center">
+                            <div class="TaskContainerHeading">
+                                <span>Time</span>
+                            </div>
+                            <div class="time">
+                                <div class="clock">
+                                    <div class="hand" style="--clr:red;--hig:70px;" id="second"><i></i></div>
+                                    <div class="hand" style="--clr:black;--hig:65px;" id="minute"><i></i></div>
+                                    <div class="hand" style="--clr:black;--hig:55px;" id="hour"><i></i></div>
+
+                                    <span style="--i:1;"><b>1</b></span>
+                                    <span style="--i:2;"><b>2</b></span>
+                                    <span style="--i:3;"><b>3</b></span>
+                                    <span style="--i:4;"><b>4</b></span>
+                                    <span style="--i:5;"><b>5</b></span>
+                                    <span style="--i:6;"><b>6</b></span>
+                                    <span style="--i:7;"><b>7</b></span>
+                                    <span style="--i:8;"><b>8</b></span>
+                                    <span style="--i:9;"><b>9</b></span>
+                                    <span style="--i:10;"><b>10</b></span>
+                                    <span style="--i:11;"><b>11</b></span>
+                                    <span style="--i:12;"><b>12</b></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="timeBlock flex flex-column align-center">
+                            <div class="TaskContainerHeading">
+                                <span>PomoDoro</span>
+                            </div>
+                            <div class="pomodoro">
+                                <div class="timer">
+                                    25:00
+                                </div>
+                                <div class="buttons">
+                                    <button class="start"><i class="fa-solid fa-play"></i></button>
+                                    <button class="reset"><i class="fa-solid fa-rotate-left"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="createNewTaskSection flex align-center justify-center">
+                <div class="createNewTask flex flex-column">
+                    <div class="CreateNewTasksHeading">
+                        <span><i class="fa-solid fa-book-bookmark"></i>Create New Task</span>
+                        <i class="fa-solid fa-xmark cutCreateNewTaskSection"></i>
+                    </div>
+                    <div class="CreateNewTasksProcess">
+                        <span>Task Title</span>
+                        <input type="text" placeholder="Enter Task Title" id="NewTaskTitle">
+                    </div>
+                    <p class="EmptyInput"></p>
+                    <button class="addNewTask mt-20">Add Task</button>
+                </div>
+            </div>
+            <div class="EditTaskSection flex align-center justify-center ">
+                <div class="EditTask radius-15">
+                    <div class="EditTaskHeadingCut">
+                        <h2>Edit Task</h2>
+                        <i class="fa-solid fa-xmark cutEditTaskSection"></i>
+                    </div>
+                    <p class="EmptyTaskTitle"></p>
+                    <div class="TaskTitle-Btns mt-20">
+                        <input type="text" class="TaskTitleToBeEdit">
+                        <div class="Btns">
+                            <button class="cancle">Cancle</button>
+                            <button class="save">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="task management system/taskManager.js"></script>
+    <script src="dashboard management system/dashboardManagement.js"></script>
+    <script src="task management system/calender.js"></script>
+</body>
+
+</html>

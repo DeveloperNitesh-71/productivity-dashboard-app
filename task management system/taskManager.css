@@ -1,0 +1,446 @@
+.TaskManager-Times {
+    width: 100%;
+}
+
+.TaskManager {
+    width: 100%;
+}
+
+.taskBlock {
+    height: max-content;
+    max-height: 350px;
+    width: 33%;
+    border: 1px solid gray;
+    border-radius: 15px;
+    background-color: var(--card-color);
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+    transition: all .3s ease;
+    overflow: auto;
+    overflow-x: hidden;
+    gap: 20px;
+    padding-bottom: 20px;
+}
+
+.taskBlock::-webkit-scrollbar {
+    width: 0;
+}
+
+.taskBlock:hover {
+    box-shadow: 0px 0px 8px 4px rgba(0, 0, 0, 0.2);
+}
+
+.TaskContainerHeading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding-inline: 20px;
+    padding-block: 10px;
+    border-bottom: 1px solid black;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.TaskContainerHeading span {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.TaskContainerHeading .icons {
+    gap: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.TaskContainerHeading .icons i {
+    cursor: pointer;
+}
+
+.TasksContainer {
+    height: max-content;
+    min-height: 50px;
+    width: 100%;
+    padding-inline: 20px;
+    overflow: auto;
+}
+
+.TasksContainer::-webkit-scrollbar {
+    width: 0;
+}
+
+.Tasks {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: white;
+    border: 1px solid #00000069;
+    border-radius: 5px;
+    cursor: grab;
+    transition: all .3s ease;
+}
+
+.Tasks:hover {
+    box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.2);
+}
+
+.Tasks span {
+    font-family: "Electrolize";
+    font-weight: 600;
+    cursor: url(../assets/editabbleCursor.cur), auto;
+}
+
+.Tasks i {
+    color: rgba(255, 0, 0, 0.911);
+    cursor: pointer;
+}
+
+.createNewTaskSection,
+.EditTaskSection {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: transparent;
+    backdrop-filter: blur(8px);
+    scale: 0.1;
+    transform: translateY(-600%);
+    transition: all 0.3s ease;
+}
+
+.hide {
+    scale: 1;
+    transform: translateY(0);
+}
+
+.createNewTask {
+    height: max-content;
+    width: 400px;
+    border-radius: 15px;
+    background-color: white;
+    border: 1px solid black;
+    padding: 20px;
+}
+
+.CreateNewTasksHeading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.CreateNewTasksHeading span {
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.CreateNewTasksHeading span i {
+    height: 20px;
+    color: black;
+    background: white;
+    cursor: default;
+}
+
+
+.CreateNewTasksHeading i {
+    color: rgba(255, 0, 0, 0.911);
+    background-color: rgba(255, 0, 0, 0.356);
+    border-radius: 5px;
+    padding: 3px 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.CreateNewTasksProcess {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: start;
+    margin-top: 20px;
+}
+
+
+
+.CreateNewTasksProcess input {
+    padding: 8px 20px;
+    border: 1px solid rgba(0, 0, 0, 0.404);
+    outline: none;
+    background: rgb(207 207 255 / 34%);
+    border-radius: 5px;
+    cursor: text;
+}
+
+.EmptyInput,
+.EmptyTaskTitle {
+    color: red;
+    font-size: 13px;
+    margin-top: 5px;
+    margin-bottom: -10px;
+    display: none;
+}
+
+.addNewTask {
+    padding-block: 5px;
+    background-color: var(--button-color);
+    border: none;
+    color: white;
+    font-family: "poppins";
+    font-weight: 500;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: all .3s ease;
+    cursor: pointer;
+    outline: none;
+}
+
+.addNewTask:hover {
+    box-shadow: 0px 0px 15px var(--button-color);
+}
+
+.EditTaskHeadingCut {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.EditTaskHeadingCut i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: red;
+    background-color: rgba(255, 0, 0, 0.342);
+    padding: 3px 7px;
+    border-radius: 2px;
+}
+
+.EditTask {
+    height: max-content;
+    width: 380px;
+    border: 1px solid black;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    padding: 20px;
+}
+
+.TaskTitle-Btns {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 10px;
+    width: 100%;
+}
+
+.TaskTitle-Btns input {
+    padding: 5px 15px;
+    border: 1px solid var(--button-color);
+    border-radius: 5px;
+    background-color: #0000fd3b;
+    width: 100%;
+    outline: none;
+}
+
+.TaskTitle-Btns .Btns {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.TaskTitle-Btns .Btns button {
+    width: 100%;
+    padding: 5px 20px;
+    color: white;
+    font-weight: 500;
+    border: 2px solid #0000fd57;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+.TaskTitle-Btns .Btns .save {
+    background-color: var(--button-color);
+}
+
+.TaskTitle-Btns .Btns .cancle {
+    background-color: #0000fd5e;
+}
+
+
+.timeBlock {
+    height: max-content;
+    max-height: 350px;
+    width: 33%;
+    border: 1px solid gray;
+    border-radius: 15px;
+    background-color: var(--card-color);
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+.calender {
+    height: 250px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.left,
+.right {
+    height: 100%;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    font-family: "poppins";
+}
+
+.left {
+    background-color: white;
+}
+
+.left span {
+    font-size: 5rem;
+    font-weight: 600;
+}
+
+.left p {
+    font-size: 25px;
+    font-weight: 500;
+}
+
+.right {
+    background-color: orangered;
+}
+
+.right span {
+    font-size: 3rem;
+    color: white;
+}
+
+.right p {
+    font-size: 30px;
+    color: white;
+}
+
+
+.time {
+    height: 250px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.clock {
+    height: 230px;
+    width: 230px;
+    border-radius: 10%;
+    border: 1px solid black;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.clock span {
+    position: absolute;
+    transform: rotate(calc(30deg * var(--i)));
+    text-align: center;
+    inset: 5px;
+}
+
+.clock span b {
+    transform: rotate(calc(-30deg * var(--i)));
+    display: inline-block;
+}
+
+.clock::before{
+    content: "";
+    position: absolute;
+    height: 8px;
+    width: 8px;
+    border-radius: 50%;
+    background-color: black;
+}
+
+.hand{
+    position: absolute;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.hand i{
+    position: absolute;
+    background-color: var(--clr);
+    width: 4px;
+    height: var(--hig);
+    border-radius: 8px;
+    flex-direction: row-reverse;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.pomodoro {
+    height: 250px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+
+.timer {
+    height: 200px;
+    width: 200px;
+    border: 1px solid black;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 50px;
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+
+}
+
+.buttons button {
+    padding: 10px 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+    background-color: var(--card-color);
+    border-radius: 50%;
+    font-size: 20px;
+}
+
+.buttons button i {
+    color: var(--button-color);
+}
