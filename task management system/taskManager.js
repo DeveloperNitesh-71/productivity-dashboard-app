@@ -178,11 +178,12 @@ cutEditTaskSection.addEventListener("click", () => {
 //edit name of task container
 const TaskContainerHeadings = document.querySelectorAll(".TaskContainerHeading")
 let SelectedContainerHeading = null;
+let SelectedContainerId = null;
 TaskContainerHeadings.forEach(TaskContainerHeading => {
     TaskContainerHeading.addEventListener("click", (event) => {
         if (event.target.classList.contains("EditHeading")) {
             mode = "EditingTaskContainer";
-            console.log(mode);
+            SelectedContainerId = event.target.parentElement.parentElement.parentElement.getAttribute("id")
             SelectedContainerHeading = event.target.parentElement.parentElement.querySelector("span")
             EditTaskSection.classList.add("hide")
             TaskTitleToBeEdit.value = SelectedContainerHeading.textContent;
@@ -192,12 +193,16 @@ TaskContainerHeadings.forEach(TaskContainerHeading => {
 
 //saving edited task container heading
 let SelecteContainerHeading = SelectedContainerHeading;
-function ChangeTaskContainerName(SelecteContainerHeading) {
+let SelecteContainerId = SelectedContainerId;
+function ChangeTaskContainerName(SelecteContainerHeading, SelecteContainerId) {
     if (SelecteContainerHeading !== null) {
         if (TaskTitleToBeEdit.value !== "") {
+            console.log(SelecteContainerId);
+            TaskCotainerNameStored(TaskTitleToBeEdit.value, SelecteContainerId)
             SelectedContainerHeading.textContent = TaskTitleToBeEdit.value
             TaskTitleToBeEdit.value = "";
             SelectedContainerHeading = null;
+            SelectedContainerId = null;
             EmptyTaskTitle.style.display = "none"
             EditTaskSection.classList.remove("hide")
         }
@@ -227,7 +232,6 @@ function StopDrag(Container) {
     Container.addEventListener("drop", (drager) => {
         UpdateInStorage(SelectedDrager, Container);
         Container.appendChild(SelectedDrager);
-        // console.log(SelectedDrager.dataset.status);
         if (SelectedDrager.dataset.status !== Container.dataset.status) {
             if (Container.dataset.status === "pending") {
                 if (SelectedDrager.dataset.status === "completed") {
@@ -348,4 +352,16 @@ function UpdateTaskValueInStorage(EditableElement, NewTask) {
         }
     })
     localStorage.setItem("Task", JSON.stringify(TaskArr))
+}
+
+
+//store task container names in localstorage
+function TaskCotainerNameStored(TaskContainerNewName, ContainerId) {
+    let TasksContainersName = JSON.parse(localStorage.getItem("TaskContainersName")) || [];
+    let ContainersName = {
+        TaskContainerName: TaskContainerNewName,
+        ContainerId: ContainerId
+    }
+    TasksContainersName.push(ContainersName)
+    localStorage.setItem("TaskContainersName", JSON.stringify(TasksContainersName))
 }

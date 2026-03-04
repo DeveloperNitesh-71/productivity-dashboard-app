@@ -58,11 +58,23 @@ reset.addEventListener("click", () => {
     timer.textContent = min + ":" + "0" + sec;
 })
 
+
 let min = 25;
 let sec = 0;
-let focusSeconds = 0;
-let focusMinutes = 0;
-let focushours = 0;
+let focusTimeData = JSON.parse(localStorage.getItem("focusTime"))
+let focusSeconds = focusTimeData[0].FocusSeconds || 0;
+let focusMinutes = focusTimeData[0].FocusMinutes || 0;
+let focushours = focusTimeData[0].FocusHours || 0;
+
+if (focusMinutes < 1) {
+    focustime.textContent = focusSeconds + "s"
+}
+else if (focusMinutes < 60 && focusMinutes > 1 && focushours < 1) {
+    focustime.textContent = focusMinutes + "min"
+}
+else if (focushours > 1) {
+    focustime.textContent = focushours + "Hrs"
+}
 
 function pomo() {
     time = setInterval(() => {
@@ -100,6 +112,15 @@ function pomo() {
 
     focusTime = setInterval(() => {
         focusSeconds++
+        if (focusMinutes < 1) {
+            focustime.textContent = focusSeconds + "s"
+        }
+        else if (focusMinutes < 60 && focusMinutes > 1 && focushours < 1) {
+            focustime.textContent = focusMinutes + "min"
+        }
+        else if (focushours > 1) {
+            focustime.textContent = focushours + "Hrs"
+        }
         if (focusSeconds / 60 === 1 && focushours < 1) {
             focusMinutes++;
             focusSeconds = 0
@@ -113,6 +134,7 @@ function pomo() {
             focusMinutes = 0;
             focustime.textContent = focushours + "Hrs"
         }
+        storeFocusTime(focusSeconds, focusMinutes, focushours)
 
     }, 1000)
 }
@@ -139,3 +161,16 @@ function showTime() {
 }
 
 setInterval(showTime, 1000)
+
+
+function storeFocusTime(focsec, focmin, fochrs) {
+    let focTime = [];
+    let foctim = {
+        FocusSeconds: focsec,
+        FocusMinutes: focmin,
+        FocusHours: fochrs
+    }
+    focTime.push(foctim)
+    localStorage.setItem("focusTime", JSON.stringify(focTime))
+}
+

@@ -4,12 +4,15 @@
 
 .TaskManager {
     width: 100%;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
 }
 
 .taskBlock {
     height: max-content;
     max-height: 350px;
-    width: 33%;
+    width: 380px;
     border: 1px solid gray;
     border-radius: 15px;
     background-color: var(--card-color);
@@ -274,7 +277,7 @@
 .timeBlock {
     height: max-content;
     max-height: 350px;
-    width: 33%;
+    width: 380px;
     border: 1px solid gray;
     border-radius: 15px;
     background-color: var(--card-color);
@@ -385,21 +388,6 @@
     border-radius: 8px;
     flex-direction: row-reverse;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 .pomodoro {
     height: 250px;

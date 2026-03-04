@@ -6,13 +6,9 @@ body {
     align-items: center;
     justify-content: center;
     height: max-content;
-    /* position: relative; */
 }
 
 .side-bar {
-    /* position: fixed; */
-    /* top: 0; */
-    /* left: 0; */
     height: 100vh;
     width: 255px;
     border-right: 1px solid rgb(0, 0, 0);
@@ -82,9 +78,12 @@ body {
 }
 
 .HomeTasks{
-    margin: auto;
+    display: flex;
+    justify-content: center;
     padding-bottom: 20px;
     border-bottom: 1px solid var(--border-color);
+    flex-wrap: wrap;
+    align-items: center;
 }
 
 .HomeTasks .card{
@@ -101,7 +100,6 @@ body {
 .progressbar{
     height: 15px;
     border: 1px solid var(--border-color);
-    /* background: linear-gradient(90deg,green 68%, rgb(255, 255, 255) 32%); */
 }
 
 .perc-progressBar h3{
