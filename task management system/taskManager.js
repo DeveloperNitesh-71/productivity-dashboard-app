@@ -147,6 +147,7 @@ function ChangeTaskName(selecteTaskToEdited) {
     if (selecteTaskToEdited !== null) {
         if (TaskTitleToBeEdit.value !== "") {
             selecteTaskToEdit.textContent = TaskTitleToBeEdit.value
+            console.log(selecteTaskToEdit);
             UpdateTaskValueInStorage(selecteTaskToEdit, TaskTitleToBeEdit.value)
             TaskTitleToBeEdit.value = "";
             selecteTaskToEdit = null;
@@ -349,18 +350,21 @@ function createTaskCardFromStorage() {
         }
     })
 }
-createTaskCardFromStorage()
+if(localStorage.getItem("Task")) {
+        createTaskCardFromStorage()
+}
 
 //updating task name in localStorage;
 
 function UpdateTaskValueInStorage(EditableElement, NewTask) {
     TaskArr = TaskArr.map(Task => {
-        if (Task.id === EditableElement.parentElement.getAttribute("id")) {
+        if (EditableElement.parentElement.getAttribute("id") === Task.id) {
             return {
                 ...Task,
                 Taskname: NewTask
             }
         }
+        return Task
     })
     localStorage.setItem("Task", JSON.stringify(TaskArr))
 }
@@ -370,6 +374,7 @@ function UpdateTaskValueInStorage(EditableElement, NewTask) {
 let TasksContainersName = JSON.parse(localStorage.getItem("TaskContainersName")) || [];
 function TaskCotainerNameStored(TaskBlock) {
     window.addEventListener("DOMContentLoaded", () => {
+        let TaskCname = TasksContainersName
         if (TasksContainersName.length < 3) {
             let ContainerId = TaskBlock.getAttribute("id")
             let ContainerName = TaskBlock.querySelector("span").textContent
