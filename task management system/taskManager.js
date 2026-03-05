@@ -147,7 +147,6 @@ function ChangeTaskName(selecteTaskToEdited) {
     if (selecteTaskToEdited !== null) {
         if (TaskTitleToBeEdit.value !== "") {
             selecteTaskToEdit.textContent = TaskTitleToBeEdit.value
-            console.log(selecteTaskToEdit);
             UpdateTaskValueInStorage(selecteTaskToEdit, TaskTitleToBeEdit.value)
             TaskTitleToBeEdit.value = "";
             selecteTaskToEdit = null;
