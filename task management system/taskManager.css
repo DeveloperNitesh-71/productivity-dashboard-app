@@ -5,7 +5,6 @@
 .TaskManager {
     width: 100%;
     flex-wrap: wrap;
-    align-items: center;
     justify-content: center;
 }
 
@@ -168,7 +167,7 @@
 
 
 
-.CreateNewTasksProcess input {
+.CreateNewTasksProcess input{
     padding: 8px 20px;
     border: 1px solid rgba(0, 0, 0, 0.404);
     outline: none;
@@ -186,7 +185,7 @@
     display: none;
 }
 
-.addNewTask {
+.addNewTask{
     padding-block: 5px;
     background-color: var(--button-color);
     border: none;

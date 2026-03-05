@@ -126,6 +126,7 @@ function TaskcontainerListener(TaskContainer) {
 const taskBlocks = document.querySelectorAll(".taskBlock");
 taskBlocks.forEach(taskBlock => {
     TaskcontainerListener(taskBlock)
+    TaskCotainerNameStored(taskBlock)
 })
 
 
@@ -177,6 +178,17 @@ cutEditTaskSection.addEventListener("click", () => {
 
 //edit name of task container
 const TaskContainerHeadings = document.querySelectorAll(".TaskContainerHeading")
+TaskContainerHeadings.forEach(ContainerName => {
+    window.addEventListener("DOMContentLoaded", () => {
+        let data = JSON.parse(localStorage.getItem("TaskContainersName"))
+        data.map(CName => {
+            if(ContainerName.parentElement.getAttribute("id") === CName.ContainerId){
+                ContainerName.parentElement.querySelector("span").textContent = CName.TaskContainerName
+            }
+        })
+    })
+})
+
 let SelectedContainerHeading = null;
 let SelectedContainerId = null;
 TaskContainerHeadings.forEach(TaskContainerHeading => {
@@ -194,11 +206,10 @@ TaskContainerHeadings.forEach(TaskContainerHeading => {
 //saving edited task container heading
 let SelecteContainerHeading = SelectedContainerHeading;
 let SelecteContainerId = SelectedContainerId;
-function ChangeTaskContainerName(SelecteContainerHeading, SelecteContainerId) {
+function ChangeTaskContainerName(SelecteContainerHeading) {
     if (SelecteContainerHeading !== null) {
         if (TaskTitleToBeEdit.value !== "") {
-            console.log(SelecteContainerId);
-            TaskCotainerNameStored(TaskTitleToBeEdit.value, SelecteContainerId)
+            updateExistedContainerNameInlocalstorage(TaskTitleToBeEdit.value, SelectedContainerId)
             SelectedContainerHeading.textContent = TaskTitleToBeEdit.value
             TaskTitleToBeEdit.value = "";
             SelectedContainerHeading = null;
@@ -356,12 +367,34 @@ function UpdateTaskValueInStorage(EditableElement, NewTask) {
 
 
 //store task container names in localstorage
-function TaskCotainerNameStored(TaskContainerNewName, ContainerId) {
-    let TasksContainersName = JSON.parse(localStorage.getItem("TaskContainersName")) || [];
-    let ContainersName = {
-        TaskContainerName: TaskContainerNewName,
-        ContainerId: ContainerId
-    }
-    TasksContainersName.push(ContainersName)
+let TasksContainersName = JSON.parse(localStorage.getItem("TaskContainersName")) || [];
+function TaskCotainerNameStored(TaskBlock) {
+    window.addEventListener("DOMContentLoaded", () => {
+        if (TasksContainersName.length < 3) {
+            let ContainerId = TaskBlock.getAttribute("id")
+            let ContainerName = TaskBlock.querySelector("span").textContent
+            let ContainersName = {
+                TaskContainerName: ContainerName,
+                ContainerId: ContainerId
+            }
+            TasksContainersName.push(ContainersName)
+            localStorage.setItem("TaskContainersName", JSON.stringify(TasksContainersName))
+        }
+    })
+}
+
+function updateExistedContainerNameInlocalstorage(TaskContainerNewName, ContainerId) {
+    TasksContainersName = TasksContainersName.map(ContainerName => {
+        if (ContainerName.ContainerId === ContainerId) {
+            return {
+                ...ContainerName,
+                TaskContainerName: TaskContainerNewName
+            }
+        }
+        else {
+            return ContainerName;
+        }
+    })
     localStorage.setItem("TaskContainersName", JSON.stringify(TasksContainersName))
 }
+

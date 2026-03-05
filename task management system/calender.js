@@ -31,8 +31,16 @@ Calender()
 
 //pomodoro funtionality
 
-const start = document.querySelector(".start");
-const reset = document.querySelector(".reset");
+let min = 25;
+let sec = 0;
+let focusTimeData = JSON.parse(localStorage.getItem("focusTime"))
+let focusSeconds = focusTimeData?.[0]?.FocusSeconds || 0;
+let focusMinutes = focusTimeData?.[0]?.FocusMinutes || 0;
+let focushours = focusTimeData?.[0]?.FocusHours || 0;
+
+
+const start = document.querySelector(".start i");
+const reset = document.querySelector(".reset i");
 const timer = document.querySelector(".timer");
 const startIcon = document.querySelector(".fa-play");
 let time = null;
@@ -53,18 +61,13 @@ reset.addEventListener("click", () => {
     startIcon.classList.remove("fa-pause");
     startIcon.classList.add("fa-play");
     clearInterval(time);
+    clearInterval(focusTime)
     min = 25;
     sec = 0;
     timer.textContent = min + ":" + "0" + sec;
 })
 
 
-let min = 25;
-let sec = 0;
-let focusTimeData = JSON.parse(localStorage.getItem("focusTime"))
-let focusSeconds = focusTimeData[0].FocusSeconds || 0;
-let focusMinutes = focusTimeData[0].FocusMinutes || 0;
-let focushours = focusTimeData[0].FocusHours || 0;
 
 if (focusMinutes < 1) {
     focustime.textContent = focusSeconds + "s"
